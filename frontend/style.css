@@ -16,6 +16,12 @@ body {
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
 }
 
+.selected {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
 /* Yazı kutusu */
 textarea {
   width: 100%;
@@ -77,4 +83,43 @@ pre {
   button {
     width: 100%;
   }
+}
+
+#timerSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fffbea;
+  padding: 4px 16px;
+  border-radius: 10px;
+  border-left: 6px solid #ffe58f;
+  margin-bottom: 20px;
+  height: 36px;
+  font-size: 0.9em;
+}
+
+#timerDisplay {
+  font-size: 1em;
+  font-weight: bold;
+  color: #856404;
+}
+
+#startTimerBtn {
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+  padding: 8px 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#startTimerBtn:hover {
+  background-color: #e0a800;
+}
+#task1Btn, #task2Btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
 }

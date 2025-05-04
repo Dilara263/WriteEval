@@ -4,16 +4,47 @@
   <meta charset="UTF-8">
   <title>IELTS Writing Evaluator</title>
   <link rel="stylesheet" href="../frontend/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js ekle -->
 </head>
 <body>
   <div class="container">
     <h1>IELTS Writing Task Evaluation</h1>
+
+    <div id="timerSection" style="margin-bottom: 20px;">
+      <h3>🕒 Timer: <span id="timerDisplay">60:00</span></h3>
+      <button id="startTimerBtn" onclick="startTimer()">Start 60-Minute Timer</button>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <button id="task1Btn" onclick="setTaskType('task1')">Task 1 Evaluation</button>
+      <button id="task2Btn" onclick="setTaskType('task2')">Task 2 Evaluation</button>
+    </div>
+
     <textarea id="essay" rows="15" placeholder="Paste your essay here..."></textarea>
     <br>
-    <button onclick="submitEssay()">Evaluate</button>
 
-    <h3>Result:</h3>
+    <div class="button-group">
+      <button onclick="submitEssay()">📝 Evaluate</button>
+      <button onclick="correctEssay()">🔍 Correct Mistakes</button>
+      <button onclick="improveEssay()">🚀 Improve Text</button>
+    </div>
+
+    <h3>Evaluation Result:</h3>
     <pre id="result">Waiting for submission...</pre>
+
+    <h3>Band Score Chart:</h3>
+    <canvas id="scoreChart" width="600" height="300"></canvas>
+
+    <div id="correctedSection" style="display: none; margin-top: 20px;">
+      <h3>Corrected Essay:</h3>
+      <pre id="correctedText">No corrections yet.</pre>
+    </div>
+
+    <div id="improvedSection" style="display: none; margin-top: 20px;">
+      <h3>Improved Essay:</h3>
+      <pre id="improvedText">No improvements yet.</pre>
+    </div>
+
   </div>
 
   <script src="../static/app.js"></script>
