@@ -1,0 +1,1 @@
+-e ".env\n.idea/\n__pycache__/\n*.pyc" 
