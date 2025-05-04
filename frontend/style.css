@@ -1,0 +1,80 @@
+/* Genel gövde yapısı */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  padding: 20px;
+  color: #333;
+}
+
+/* Ana kutu (container) */
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+}
+
+/* Yazı kutusu */
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1em;
+  border: 2px solid #cce5ff;
+  border-radius: 8px;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border 0.3s;
+}
+
+textarea:focus {
+  border-color: #66b2ff;
+  outline: none;
+}
+
+/* Buton */
+button {
+  padding: 10px 24px;
+  font-size: 1em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Sonuç kutusu */
+pre {
+  background-color: #e9f5ff;
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  border-left: 4px solid #007bff;
+}
+
+/* Sonuç yazısı */
+#result {
+  font-family: 'Courier New', monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  color: #212529;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  button {
+    width: 100%;
+  }
+}

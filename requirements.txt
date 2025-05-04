@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+transformers
+torch
+google-generativeai
+python-dotenv
