@@ -1,1 +1,4 @@
--e ".env\n.idea/\n__pycache__/\n*.pyc" 
+.env
+.idea/
+__pycache__/
+*.pyc

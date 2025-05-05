@@ -49,17 +49,17 @@ async function correctEssay() {
     });
 
     const data = await response.json();
+    //console.log("Tüm response verisi:", data);
 
-    // Sonucu göster
+    document.getElementById("highlightedText").innerHTML = data.highlighted_text;
     document.getElementById("correctedText").innerText = data.corrected_text;
 
-    // correctedSection'ı görünür yap
     const section = document.getElementById("correctedSection");
     section.style.display = "block";
 
-    // sayfayı o bölüme kaydır
     section.scrollIntoView({ behavior: "smooth" });
 }
+
 
 
 async function improveEssay() {
@@ -74,14 +74,11 @@ async function improveEssay() {
 
     const data = await response.json();
 
-    // Sonucu göster
     document.getElementById("improvedText").innerText = data.improved_text;
 
-    // improvedSection'ı görünür yap
     const section = document.getElementById("improvedSection");
     section.style.display = "block";
 
-    // sayfayı o bölüme kaydır
     section.scrollIntoView({ behavior: "smooth" });
 }
 
@@ -160,7 +157,7 @@ function updateTimerDisplay() {
 
 function startTimer() {
     clearInterval(timerInterval); // Önceki sayaç varsa durdur
-    timeLeft = 60 * 60; // 60 dakika
+    timeLeft = 60 * 60;
     updateTimerDisplay();
 
     timerInterval = setInterval(() => {
