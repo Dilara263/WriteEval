@@ -88,3 +88,47 @@ async def improve_essay(text: str) -> str:
     """
     response_text = await generate_content_async(prompt)
     return response_text
+
+
+async def analyze_essay(text: str) -> dict:
+    prompt = f"""
+    Analyze the following student essay in English. Respond ONLY in pure JSON, and do NOT use markdown like ```json. Return a JSON with the following keys:
+
+    {{
+      "word_count": number of words in the text,
+      "grammar_mistake_count": total number of grammar, punctuation, or structural mistakes,
+      "vocab_repetition": [{{"word": "repeatedWord", "count": 5}}, ... top 5 repeated non-stop words],
+      "vocab_levels": {{
+          "A1": 5,
+          "A2": 10,
+          "B1": 15,
+          "B2": 8,
+          "C1": 2,
+          "C2": 0
+      }}
+    }}
+
+    Do not explain anything. Only output valid JSON that can be parsed directly by json.loads().
+    Student's text:
+    {text}
+    """
+
+    response_text = await generate_content_async(prompt)
+    raw = response_text.strip()
+
+    if raw.startswith("```"):
+        raw = re.sub(r"^```[a-z]*\n?", "", raw)
+        raw = re.sub(r"\n?```$", "", raw)
+
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        print("JSON decode error in analyze_essay:", e)
+        return {
+            "word_count": 0,
+            "grammar_mistake_count": 0,
+            "vocab_repetition": [],
+            "vocab_levels": {
+                "A1": 0, "A2": 0, "B1": 0, "B2": 0, "C1": 0, "C2": 0
+            }
+        }

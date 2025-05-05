@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.model import evaluate_essay, correct_essay, improve_essay
+from app.model import evaluate_essay, correct_essay, improve_essay, analyze_essay
 from app.schemas import EssayRequest
 import asyncio
 
@@ -30,3 +30,7 @@ async def correct(request: EssayRequest):
 async def improve(request: EssayRequest):
     improved_text = await improve_essay(request.text)
     return {"improved_text": improved_text}
+
+@app.post("/analyze")
+async def analyze_endpoint(request: EssayRequest):
+    return await analyze_essay(request.text)

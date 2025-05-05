@@ -5,23 +5,37 @@ body {
   color: #333;
 }
 
-/* Ana kutu (container) */
+.main-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Sol Panel */
 .container {
-  max-width: 800px;
-  margin: auto;
+  flex: 2;
   background: #ffffff;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
 }
 
+/* Sağ Panel */
+.analysis-panel {
+  flex: 1;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+}
+
+/* Genel */
 .selected {
   background-color: #007bff;
   color: white;
   border: 1px solid #007bff;
 }
 
-/* Yazı kutusu */
 textarea {
   width: 100%;
   padding: 12px;
@@ -38,7 +52,6 @@ textarea:focus {
   outline: none;
 }
 
-/* Buton */
 button {
   padding: 10px 24px;
   font-size: 1em;
@@ -55,7 +68,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Sonuç kutusu */
 pre,
 .code-box {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -68,7 +80,6 @@ pre,
   word-break: break-word;
 }
 
-/* Sonuç yazısı */
 #result {
   white-space: pre-wrap;
   word-break: break-word;
@@ -76,14 +87,14 @@ pre,
   color: #212529;
 }
 
-/* Responsive */
-@media screen and (max-width: 600px) {
-  .container {
-    padding: 20px;
+@media screen and (max-width: 900px) {
+  .main-layout {
+    flex-direction: column;
   }
 
-  button {
-    width: 100%;
+  .analysis-panel {
+    margin-top: 20px;
+    max-width: 100%;
   }
 }
 
@@ -118,7 +129,7 @@ pre,
 }
 
 #startTimerBtn:hover {
-  background-color: #e0a800;
+  background-color: #e0a800
 }
 #task1Btn, #task2Btn {
   padding: 6px 12px;
@@ -144,18 +155,24 @@ pre,
   border-radius: 6px;
   white-space: nowrap;
   font-size: 0.85em;
-  bottom: 105%;
+  bottom: 125%;  /* Alt tarafta 125% kadar mesafe bırak */
   left: 0;
-  z-index: 1000;
+  z-index: 9999;  /* Tooltip'in üstte görünmesini sağlamak için z-index değeri artırıldı */
   opacity: 0;
-  transform: translateY(5px);
+  transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   pointer-events: none;
+  word-wrap: break-word; /* Uzun kelimeleri kır */
 }
 
 /* Hover ile görünürlük */
 .error:hover::after {
   opacity: 1;
   transform: translateY(0);
+}
+
+#vocabChart {
+  width: 250px;
+  height: 250px;
 }
